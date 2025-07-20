@@ -19,6 +19,8 @@ export default function SpringBackground() {
       drift: number;
       angle: number;
       rotationSpeed: number;
+      color: string;
+      axisOffset: number;
     }[] = [];
 
     const createPetal = () => {
@@ -27,13 +29,19 @@ export default function SpringBackground() {
         y: -20,
         size: 10 + Math.random() * 10,
         speed: 0.5 + Math.random() * 1.5,
-        drift: (Math.random() - 0.5) * 1,
+        drift: (Math.random() - 0.5) * 1.5,
         angle: Math.random() * Math.PI * 2,
         rotationSpeed: (Math.random() - 0.5) * 0.05,
+        color: `rgba(255, ${180 + Math.floor(Math.random() * 40)}, ${
+          200 + Math.floor(Math.random() * 30)
+        }, ${0.5 + Math.random() * 0.3})`, // ランダムなピンク色
+        axisOffset: (Math.random() - 0.5) * 5, // 軸のずれ
       };
     };
 
-    for (let i = 0; i < 50; i++) petals.push(createPetal());
+    let animationId: number;
+
+    for (let i = 0; i < 30; i++) petals.push(createPetal());
 
     const render = () => {
       ctx.fillStyle = "#fff8f5"; // 春っぽい背景色
@@ -54,21 +62,44 @@ export default function SpringBackground() {
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.angle);
+
         ctx.beginPath();
-        ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 192, 203, 0.6)";
+        // しずく型（縦長・先端を尖らせる）
+        const widthPetal = p.size * 0.6;
+        const heightPetal = p.size * 1.5;
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(
+          widthPetal + p.axisOffset,
+          -heightPetal * 0.4, // 右上
+          widthPetal,
+          heightPetal * 0.7, // 右下
+          0,
+          heightPetal // 先端
+        );
+        ctx.bezierCurveTo(
+          -widthPetal,
+          heightPetal * 0.7, // 左下
+          -widthPetal + p.axisOffset,
+          -heightPetal * 0.4, // 左上
+          0,
+          0 // 戻る
+        );
+        ctx.closePath();
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = "rgba(255,192,203,0.3)";
+        ctx.shadowBlur = 4;
         ctx.fill();
         ctx.restore();
       });
 
-      const gradient = ctx.createLinearGradient(0, height * 0.7, 0, height);
-      gradient.addColorStop(0, "rgba(255, 192, 203, 0)"); // 上は透明
-      gradient.addColorStop(1, "rgba(255, 105, 180, 1.0)"); // hotpink
+      const gradient = ctx.createLinearGradient(0, height * 0.3, 0, height);
+      gradient.addColorStop(0, "rgba(255, 192, 203, 0)");
+      gradient.addColorStop(1, "rgba(255, 105, 180, 1.0)");
 
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, height * 0.5, width, height * 0.5); // 下部に描画
+      ctx.fillRect(0, height * 0.3, width, height * 0.7);
 
-      requestAnimationFrame(render);
+      animationId = requestAnimationFrame(render);
     };
 
     render();
@@ -80,6 +111,7 @@ export default function SpringBackground() {
     window.addEventListener("resize", handleResize);
 
     return () => {
+      cancelAnimationFrame(animationId);
       window.removeEventListener("resize", handleResize);
     };
   }, []);

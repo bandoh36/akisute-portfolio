@@ -9,6 +9,7 @@ export default function SummerBackground() {
     const ctx = canvas.getContext("2d")!;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
+    let animationId: number;
 
     let waterLevel = height * 0.6;
     let wavePhase = 0;
@@ -103,11 +104,12 @@ export default function SummerBackground() {
       ctx.lineWidth = 1;
       ctx.strokeRect(6, 6, width - 12, height - 12);
 
-      requestAnimationFrame(render);
+      animationId = requestAnimationFrame(render);
     };
     render();
 
     return () => {
+      cancelAnimationFrame(animationId);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("click", handleClick);
     };

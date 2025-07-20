@@ -1,164 +1,91 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function AutumnBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+const leafColors = ["#e67e22", "#d35400", "#f39c12", "#c0392b"];
+const leafShapes = ["🍁", "🍂"];
+
+function FallingLeaf() {
+  const [left, setLeft] = useState(0);
+  const [delay, setDelay] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [size, setSize] = useState(0);
+  const [rotate, setRotate] = useState(0);
+  const [color, setColor] = useState("#000");
+  const [leaf, setLeaf] = useState("");
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    // 星の設定
-    const stars = Array.from({ length: 80 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height * 0.6,
-      radius: Math.random() * 1.2 + 0.3,
-      alpha: Math.random(),
-      delta: Math.random() * 0.02 + 0.01,
-    }));
-
-    // 舞う落ち葉オブジェクト（必要に応じて増減）
-    const leaves = Array.from({ length: 20 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height * 0.7,
-      size: 15 + Math.random() * 15,
-      speedY: 0.2 + Math.random() * 0.3,
-      driftX: (Math.random() - 0.5) * 0.3,
-      rotation: Math.random() * Math.PI * 2,
-      rotationSpeed: (Math.random() - 0.5) * 0.01,
-      color: `hsl(30, 80%, ${40 + Math.random() * 30}%)`, // オレンジ～黄
-    }));
-
-    // 画面下部の落ち葉の堆積
-    const bottomLeavesCount = 50;
-    const bottomLeaves = Array.from({ length: bottomLeavesCount }, () => ({
-      x: Math.random() * width,
-      y: height * 0.85 + Math.random() * (height * 0.15),
-      size: 20 + Math.random() * 30,
-      rotation: Math.random() * Math.PI * 2,
-      color: `rgba(204, 102, 0, ${0.3 + Math.random() * 0.5})`, // 濃いオレンジ～茶色
-    }));
-
-    // 背景グラデーション描画
-    const drawBackground = () => {
-      const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, "rgba(255, 165, 79, 0.15)"); // 薄いオレンジ上部
-      gradient.addColorStop(1, "rgba(255, 223, 138, 0.8)"); // 明るい黄下部
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
-    };
-
-    // 月の描画（左上）
-    const drawMoon = () => {
-      const moonX = 100;
-      const moonY = 100;
-      const moonRadius = 60;
-
-      const gradient = ctx.createRadialGradient(
-        moonX,
-        moonY,
-        10,
-        moonX,
-        moonY,
-        moonRadius * 1.5
-      );
-      gradient.addColorStop(0, "rgba(255, 244, 214, 0.8)");
-      gradient.addColorStop(1, "rgba(255, 244, 214, 0)");
-
-      ctx.beginPath();
-      ctx.arc(moonX, moonY, moonRadius, 0, Math.PI * 2);
-      ctx.fillStyle = gradient;
-      ctx.fill();
-    };
-
-    // 星の描画と瞬きアニメーション
-    const drawStars = () => {
-      for (const star of stars) {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-        ctx.fill();
-
-        star.alpha += star.delta;
-        if (star.alpha >= 1 || star.alpha <= 0) star.delta = -star.delta;
-      }
-    };
-
-    // 舞う落ち葉の描画・移動
-    const drawLeaves = () => {
-      for (const leaf of leaves) {
-        leaf.y += leaf.speedY;
-        leaf.x += leaf.driftX;
-        leaf.rotation += leaf.rotationSpeed;
-
-        // 横方向の画面外ループ処理
-        if (leaf.x > width + leaf.size) leaf.x = -leaf.size;
-        if (leaf.x < -leaf.size) leaf.x = width + leaf.size;
-
-        // 舞う落ち葉の描画
-        ctx.save();
-        ctx.translate(leaf.x, leaf.y);
-        ctx.rotate(leaf.rotation);
-        ctx.fillStyle = leaf.color;
-        ctx.beginPath();
-        ctx.ellipse(0, 0, leaf.size * 0.6, leaf.size * 0.9, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    };
-
-    // 画面下部の積もった落ち葉描画（動かない）
-    const drawBottomLeaves = () => {
-      for (const leaf of bottomLeaves) {
-        ctx.save();
-        ctx.translate(leaf.x, leaf.y);
-        ctx.rotate(leaf.rotation);
-        ctx.fillStyle = leaf.color;
-        ctx.beginPath();
-        ctx.ellipse(0, 0, leaf.size * 0.7, leaf.size * 1.0, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    };
-
-    // メインループ
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      drawBackground();
-      drawMoon();
-      drawStars();
-      drawLeaves();
-      drawBottomLeaves();
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    // リサイズ対応
-    const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    setLeft(Math.random() * 100);
+    setDelay(Math.random() * 8);
+    // 落下時間を長くしてゆっくり舞う感じに
+    setDuration(20 + Math.random() * 10);
+    setSize(20 + Math.random() * 25);
+    setRotate(Math.random() * 360);
+    setColor(leafColors[Math.floor(Math.random() * leafColors.length)]);
+    setLeaf(leafShapes[Math.floor(Math.random() * leafShapes.length)]);
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 -z-10 pointer-events-none"
-      style={{ width: "100vw", height: "100vh" }}
-    />
+    <div
+      className="absolute pointer-events-none select-none"
+      style={{
+        top: "-10%",
+        left: `${left}%`,
+        animationName: "fall",
+        animationTimingFunction: "linear",
+        animationIterationCount: "infinite",
+        animationDelay: `${delay}s`,
+        animationDuration: `${duration}s`,
+        fontSize: `${size}px`,
+        color: color,
+        userSelect: "none",
+      }}
+    >
+      <div
+        style={{
+          animationName: "sway",
+          animationTimingFunction: "ease-in-out",
+          animationIterationCount: "infinite",
+          animationDelay: `${delay}s`,
+          animationDuration: `${duration / 4}s`,
+          display: "inline-block",
+        }}
+      >
+        {leaf}
+      </div>
+    </div>
+  );
+}
+
+export default function AutumnBackground() {
+  return (
+    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-[#fff4e6] via-[#f5c396] to-[#d35400]">
+      {/* 落ち葉アニメーション: 数は6枚に減らす */}
+      {Array.from({ length: 6 }).map((_, i) => (
+        <FallingLeaf key={i} />
+      ))}
+
+      <style jsx>{`
+        @keyframes fall {
+          0% {
+            transform: translateY(-10%);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(110vh);
+            opacity: 0.3;
+          }
+        }
+        @keyframes sway {
+          0%,
+          100% {
+            transform: translateX(0) rotate(0deg);
+          }
+          50% {
+            transform: translateX(20px) rotate(40deg);
+          }
+        }
+      `}</style>
+    </div>
   );
 }
