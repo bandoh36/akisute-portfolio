@@ -1,7 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import SummerBackground from "@/components/organisms/Season/SummerBackground";
-import PageNameOverlay from "@/components/organisms/PageNameOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -21,10 +21,10 @@ const NavigationTab = ({ tabValue, tabChange }: NavigationTabProps) => {
         <button
           key={tab.label}
           className={`
-            px-4 py-2 rounded-t-lg font-bold
+            text-sm md:text-md px-4 py-2 rounded-t-lg font-bold
             ${
               tabValue === idx
-                ? "bg-green-500 text-white shadow"
+                ? "bg-green-200 text-black shadow"
                 : "bg-gray-200 text-gray-700 hover:bg-green-100"
             }
             transition

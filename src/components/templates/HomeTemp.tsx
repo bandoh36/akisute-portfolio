@@ -26,32 +26,13 @@ export default function HomeTemp() {
       <div className="relative z-10">
         <div className="flex flex-col items-center w-full pb-16 md:px-16">
           {/* タイトル */}
-          <div
-            className="
-        w-full
-        flex
-        justify-center md:justify-start
-        pt-10 md:pt-16
-
-        h-[115px] md:h-[100px]
-      "
-          >
+          <div className="w-full flex justify-center md:justify-start pt-10 md:pt-16 h-[115px] md:h-[100px]">
             <h1 className="text-3xl md:text-5xl font-bold font-sans">
               Akisute&apos;s Portfolio
             </h1>
           </div>
           {/* ナビゲーションタブ */}
-          <div
-            className="
-        flex
-        w-full
-        items-center md:items-end
-        justify-center md:justify-end
-        pr-0 md:pr-8
-        mb-2 md:mb-5
-        h-[5px] md:h-[50px]
-      "
-          >
+          <div className="flex w-full items-center md:items-end justify-center md:justify-end pr-0 md:pr-8 mb-2 md:mb-5 h-[5px] md:h-[50px]">
             <NavigationTab tabValue={tabValue} tabChange={tabChange} />
           </div>
           {/* メインコンテンツ */}

@@ -21,6 +21,10 @@ export default function ProfileContent() {
           alt={profileContent.image.alt}
           width={320}
           height={320}
+          priority
+          placeholder="blur"
+          blurDataURL={profileContent.image.blurDataURL}
+          sizes="(max-width: 768px) 160px, 320px"
           className="rounded-full object-cover shadow-lg border-4 border-white bg-gray-100"
         />
       </div>
