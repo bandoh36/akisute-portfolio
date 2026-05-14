@@ -1,0 +1,13 @@
+---
+description: App Router ページとメタデータ編集時の注意
+globs: src/app/**/*.tsx
+alwaysApply: false
+---
+
+# App Router 編集方針
+
+- ルートは主に `/` と `/home` の2画面です。
+- `src/app/page.tsx` はトップ演出ページ、`src/app/home/page.tsx` はメインページです。
+- ページ側はできるだけ薄く保ち、画面本体は `src/components/templates` に委譲してください。
+- `metadata`、`openGraph`、`canonical` などの SEO 情報を変更する場合は、両ページの整合性を確認してください。
+- サイトは静的エクスポート前提のため、ページ実装ではサーバー依存や動的機能の追加に注意してください。

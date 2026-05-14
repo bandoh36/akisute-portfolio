@@ -1,22 +1,9 @@
-export default function HistoryContent() {
-  const histories = [
-    {
-      image: "/img/history/historyImage1.jpg",
-      title: "保険系SIerで上流～下流行程を経験",
-      description:
-        "新卒で入社した保険系SIerではウォーターフォールでの開発案件に参画し、Javaでのプログラム実装だけでなく、要件定義～運用保守フェーズまで幅広く担当。入社3年目には保守開発プロジェクトのリーダーとして、案件管理やメンバーのマネジメントも経験。また独学・社外の研修を通して、Javascriptを用いたフロントエンド開発やAWSを用いたインフラ環境構築について日々自己学習に取り組む。",
-    },
-    {
-      image: "/img/history/historyImage2.jpg",
-      title: "Web系ベンチャー企業へ転職",
-      description:
-        "将来フルスタックに活躍できるエンジニアになる、という理想を実現するため転職を決意。ベンチャー企業へ転職し、自社サービス開発にて現在は主にフロントエンド領域を担当。スクラムにて、NextJS・MaterialUIを用いたモダンなWebシステム開発を経験。バックエンド・インフラ領域にも興味を持ち、今後は業務でも担当できるよう学習中。また業務外では、当ポートフォリオや学習内容発信のためのブログ、その他ToDoアプリなど積極的にアウトプットを実施し研鑽中。",
-    },
-  ];
+import { HISTORY_CONTENT } from "@/constant/historyConstant";
 
+export default function HistoryContent() {
   return (
     <div className="space-y-12 flex flex-col items-center">
-      {histories.map((item, idx) => (
+      {HISTORY_CONTENT.map((item, idx) => (
         <div
           key={idx}
           className={`
@@ -36,9 +23,11 @@ export default function HistoryContent() {
           </div>
           <div className="w-full md:w-1/2 flex flex-col justify-center">
             <h3 className="text-xl md:text-2xl font-bold mb-4">{item.title}</h3>
-            <p className="text-base md:text-lg leading-relaxed whitespace-pre-line">
-              {item.description}
-            </p>
+            <div className="space-y-4 text-base md:text-lg leading-relaxed">
+              {item.description.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           </div>
         </div>
       ))}

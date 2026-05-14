@@ -1,0 +1,18 @@
+---
+description: akisute-portfolio の概要と編集方針
+alwaysApply: true
+---
+
+# Akisute Portfolio 概要
+
+- このリポジトリは、Next.js 15 / React 19 / TypeScript / Tailwind CSS v4 / `framer-motion` で構成された個人ポートフォリオサイトです。
+- App Router 構成で、主なルートは `/` と `/home` の2つです。
+- `src/components/templates/TopTemp.tsx` はトップ演出を担当し、一定時間後に `/home` へ遷移します。
+- `src/components/templates/HomeTemp.tsx` がメイン画面で、`Profile` / `History` / `Skillset` / `Work` の4タブを切り替えます。
+- `src/components/organisms/SeasonBackground.tsx` が現在月とタブに応じて季節背景を切り替えます。背景実装は `src/components/organisms/Season/` 配下です。
+- 表示コンテンツの多くはデータ駆動です。文言や掲載情報の変更では、まず `src/constant/profileConstant.ts`、`src/constant/skillsetConstant.ts`、`src/constant/workConstant.ts` を確認してください。
+- 共通スタイルは `src/styles/globals.css` にあり、import では `tsconfig.json` の `@/` エイリアスを使います。
+- `next.config.ts` で `output: "export"` を指定しているため、変更は静的ホスティング互換を保つ前提で行ってください。
+- デプロイ設定は `amplify.yml` にあり、AWS Amplify でのビルドを前提にしています。
+- 明示的な依頼がない限り、日本語の文言トーンとポートフォリオサイトとしての体験は維持してください。
+- アニメーション、画面遷移、表示フローを変更する際は、クライアントコンポーネント、`sessionStorage`、`framer-motion` の挙動に注意してください。
