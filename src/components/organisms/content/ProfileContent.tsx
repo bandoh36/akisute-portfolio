@@ -39,19 +39,6 @@ export default function ProfileContent() {
             <span className="font-semibold">{age}歳</span>、社会人
             <span className="font-semibold">{workYears}年目</span>
           </p>
-          <p className="rounded-xl bg-sky-50 px-4 py-3 text-sm md:text-base leading-relaxed text-slate-700 border border-sky-100">
-            {profileContent.summary}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {profileContent.highlights.map((item) => (
-              <span
-                key={item}
-                className="rounded-full bg-slate-100 px-3 py-1 text-xs md:text-sm font-medium text-slate-700"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
           <div className="mt-2 space-y-2 text-gray-700 text-sm md:text-base leading-relaxed">
             {profileContent.description.map((line, idx) => (
               <p key={idx}>{line}</p>
