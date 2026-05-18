@@ -1,86 +1,46 @@
-import * as React from "react";
-import { SKILLSET_CONTENT } from "@/constant/skillsetConstant";
+import { SkillSection } from "@/constant/skillsetConstant";
 
 export interface SkillsetContentProps {
-  id: string;
+  section: SkillSection;
 }
 
-const skillsetContent = SKILLSET_CONTENT;
-
-const getSkillContents = (type: string) => {
-  const resultContents = [];
-  for (let i = 0; i < skillsetContent.length; i++) {
-    skillsetContent[i].id === type && resultContents.push(skillsetContent[i]);
-  }
-  return resultContents;
-};
-
-// 星のレーティングを表示するコンポーネント
-const Rating: React.FC<{ value: number; max?: number }> = ({
-  value,
-  max = 3,
-}) => (
-  <span>
-    {Array.from({ length: max }).map((_, i) =>
-      i < value ? (
-        <span key={i} className="text-yellow-400">
-          ★
-        </span>
-      ) : (
-        <span key={i} className="text-gray-300">
-          ☆
-        </span>
-      )
-    )}
-  </span>
-);
-
-export default function SkillsetList({ id }: SkillsetContentProps) {
+export default function SkillsetList({ section }: SkillsetContentProps) {
   return (
-    <div
-      className="
-        w-[95vw] md:w-[1100px] max-w-[1200px] bg-white rounded-[10px]
-        shadow-lg p-6 mb-6 mx-0 md:mx-6 overflow-auto
-      "
-    >
-      <div>
-        <h2 className="text-lg font-bold text-blue-600 mb-4">
-          {id === "qualification" && "資格"}
-          {id === "front" && "フロントエンド"}
-          {id === "back" && "バックエンド"}
-          {id === "other" && "その他"}
-        </h2>
-        <table className="w-full border-collapse">
-          <thead>
-            {id === "qualification" ? (
-              <tr>
-                <th className="w-1/2 py-2"></th>
-                <th className="w-1/2 py-2"></th>
-              </tr>
-            ) : (
-              <tr className="bg-gray-100">
-                <th className="w-[15%] py-2 font-medium text-left">技術要素</th>
-                <th className="w-[15%] py-2 font-medium text-left">レベル</th>
-                <th className="w-[70%] py-2 font-medium text-left">説明</th>
-              </tr>
-            )}
-          </thead>
-          <tbody>
-            {getSkillContents(id).map((row, idx) => (
-              <tr key={`${row.id}-${idx}`} className="border-b last:border-b-0">
-                <td className="py-2 px-2 font-semibold">{row.tech}</td>
-                {id === "qualification" ? (
-                  <></>
-                ) : (
-                  <td className="py-2 px-2">
-                    <Rating value={row.level} max={3} />
-                  </td>
-                )}
-                <td className="py-2 px-2">{row.explain}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="rounded-[28px] border border-white/60 bg-white/88 p-6 shadow-2xl backdrop-blur-xl md:p-7">
+      <div className="flex items-center justify-between gap-4">
+        <h3 className="text-xl font-bold tracking-tight text-slate-950">
+          {section.title}
+        </h3>
+        <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+          {section.items.length} items
+        </span>
+      </div>
+      <div className="mt-5 grid gap-4">
+        {section.items.map((item) => (
+          <div
+            key={item.name}
+            className="rounded-3xl border border-slate-200 bg-slate-50/80 p-5"
+          >
+            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h4 className="text-lg font-semibold text-slate-900">
+                  {item.name}
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {item.summary}
+                </p>
+              </div>
+            </div>
+            <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-700 md:text-base">
+              {item.points.map((point) => (
+                <li key={point} className="flex gap-2">
+                  <span className="mt-[0.4rem] h-1.5 w-1.5 rounded-full bg-sky-500" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   );
