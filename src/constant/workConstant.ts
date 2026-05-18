@@ -8,11 +8,6 @@ export const WORK_CONTENTS = [
       "自己紹介、経歴、スキル、制作物を整理し、現在の経験や強みが伝わるように設計しています。",
       "静的エクスポート前提で構成し、AWS Amplify による自動デプロイで運用しています。",
     ],
-    highlights: [
-      "転職活動向けの情報設計に合わせて継続的に更新",
-      "静的エクスポート前提で AWS Amplify に自動デプロイ",
-      "年齢や社会人歴を自動計算し、保守手作業を削減",
-    ],
     link: "",
     modalDescription: {
       front: "TypeScript、React、Next.js、Tailwind CSS、framer-motion",

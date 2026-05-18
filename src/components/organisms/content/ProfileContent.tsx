@@ -15,7 +15,7 @@ export default function ProfileContent() {
           <div className="space-y-3">
             {profileContent.summaryCards.map((card) => (
               <div key={card.title} className="rounded-2xl bg-slate-100 p-4">
-                <p className="text-xs tracking-[0.08em] text-sky-700 font-semibold">
+                <p className="text-xs font-semibold tracking-[0.08em] text-sky-700">
                   {card.title}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">
