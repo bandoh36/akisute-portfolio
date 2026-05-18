@@ -2,45 +2,35 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 
-function getPageName(tabValue: number) {
-  if (tabValue === 0) return "PROFILE";
-  if (tabValue === 1) return "HISTORY";
-  if (tabValue === 2) return "SKILLSET";
-  if (tabValue === 3) return "WORK";
-  return "";
-}
-
 interface PageNameOverlayProps {
-  tabValue: number;
+  sectionName: string;
 }
 
-const PageNameOverlay = ({ tabValue }: PageNameOverlayProps) => {
-  const pageName = getPageName(tabValue);
-
+const PageNameOverlay = ({ sectionName }: PageNameOverlayProps) => {
   return (
     <AnimatePresence mode="wait">
-      {pageName && (
+      {sectionName && (
         <motion.div
-          key={pageName}
+          key={sectionName}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
+          animate={{ opacity: 0.12 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }} // ← ここを0.4秒に短縮
+          transition={{ duration: 0.4 }}
           className="
-            fixed bottom-0 right-0 z-50
+            fixed bottom-0 right-0 z-10
             pointer-events-none select-none
-            text-[10vw] md:text-[10vw] font-extrabold
+            text-[16vw] md:text-[11vw] font-extrabold
             text-white
-            drop-shadow-[0_0_4px_rgba(255,255,255,0.3)]
+            drop-shadow-[0_0_10px_rgba(255,255,255,0.16)]
             leading-none
-            pr-6 pb-4
+            pr-4 pb-3 md:pr-8 md:pb-6
           "
           style={{
             letterSpacing: "0.08em",
             lineHeight: 1,
           }}
         >
-          {pageName}
+          {sectionName}
         </motion.div>
       )}
     </AnimatePresence>

@@ -1,5 +1,7 @@
 export const HISTORY_CONTENT = [
   {
+    period: "2019 - 2023",
+    role: "保険系 SIer / 開発・保守リーダー",
     image: "/img/history/historyImage1.jpg",
     title: "保険系 SIer で上流から下流まで経験",
     description: [
@@ -9,6 +11,8 @@ export const HISTORY_CONTENT = [
     ],
   },
   {
+    period: "2023 - Present",
+    role: "Web 系企業 / 主任・フロント開発スペシャリスト",
     image: "/img/history/historyImage2.jpg",
     title: "Web 系企業へ転職し、フロントエンドを主軸に経験を拡大",
     description: [

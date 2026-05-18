@@ -1,41 +1,41 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { Dispatch, SetStateAction, useState } from "react";
 
-const tabList = [
-  { label: "Profile" },
-  { label: "History" },
-  { label: "Skillset" },
-  { label: "Work" },
-];
-
-interface NavigationTabProps {
-  tabValue: number;
-  tabChange: (event: React.SyntheticEvent, value: number) => void;
+interface NavigationSection {
+  id: string;
+  label: string;
 }
 
-const NavigationTab = ({ tabValue, tabChange }: NavigationTabProps) => {
+interface NavigationTabProps {
+  currentSection: string;
+  sections: NavigationSection[];
+  onNavigate: (id: string) => void;
+}
+
+const NavigationTab = ({
+  currentSection,
+  sections,
+  onNavigate,
+}: NavigationTabProps) => {
   return (
-    <div className="flex space-x-4">
-      {tabList.map((tab, idx) => (
-        <button
-          key={tab.label}
-          className={`
-            text-sm md:text-md px-4 py-2 rounded-t-lg font-bold
-            ${
-              tabValue === idx
-                ? "bg-green-200 text-black shadow"
-                : "bg-gray-200 text-gray-700 hover:bg-green-100"
-            }
-            transition
-          `}
-          onClick={(e) => {
-            tabChange(e, idx);
-          }}
-        >
-          {tab.label}
-        </button>
-      ))}
+    <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/20 bg-slate-950/45 p-2 backdrop-blur-xl shadow-lg">
+      {sections.map((section) => {
+        const active = currentSection === section.id;
+
+        return (
+          <button
+            key={section.id}
+            type="button"
+            className={`rounded-full px-4 py-2 text-sm font-medium transition md:px-5 ${
+              active
+                ? "bg-white text-slate-950 shadow-md"
+                : "text-slate-200 hover:bg-white/10 hover:text-white"
+            }`}
+            onClick={() => onNavigate(section.id)}
+          >
+            {section.label}
+          </button>
+        );
+      })}
     </div>
   );
 };

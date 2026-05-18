@@ -1,10 +1,12 @@
 import WorkCard from "@/components/organisms/WorkCard";
-import { WORK_CONTENT_PORTFOLIO } from "@/constant/workConstant";
+import { WORK_CONTENTS } from "@/constant/workConstant";
 
 export default function WorkContent() {
   return (
-    <div className="flex flex-col items-center w-[95vw] md:w-[1100px] mx-auto mb-40">
-      <WorkCard content={WORK_CONTENT_PORTFOLIO} />
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
+      {WORK_CONTENTS.map((content) => (
+        <WorkCard key={content.title} content={content} />
+      ))}
     </div>
   );
 }

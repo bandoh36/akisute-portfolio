@@ -6,32 +6,37 @@ export interface SkillsetContentProps {
 
 export default function SkillsetList({ section }: SkillsetContentProps) {
   return (
-    <div
-      className="
-        w-[95vw] md:w-[1100px] max-w-[1200px] bg-white rounded-[10px]
-        shadow-lg p-6 mb-6 mx-0 md:mx-6 overflow-auto
-      "
-    >
-      <h2 className="text-lg md:text-xl font-bold text-blue-600 mb-5">
-        {section.title}
-      </h2>
-      <div className="grid gap-4">
+    <div className="rounded-[28px] border border-white/60 bg-white/88 p-6 shadow-2xl backdrop-blur-xl md:p-7">
+      <div className="flex items-center justify-between gap-4">
+        <h3 className="text-xl font-bold tracking-tight text-slate-950">
+          {section.title}
+        </h3>
+        <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+          {section.items.length} items
+        </span>
+      </div>
+      <div className="mt-5 grid gap-4">
         {section.items.map((item) => (
           <div
             key={item.name}
-            className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5"
+            className="rounded-3xl border border-slate-200 bg-slate-50/80 p-5"
           >
-            <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <h3 className="text-base md:text-lg font-semibold text-slate-900">
-                {item.name}
-              </h3>
-              <span className="text-sm font-medium text-sky-700 bg-sky-100 rounded-full px-3 py-1 w-fit">
-                {item.summary}
-              </span>
+            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h4 className="text-lg font-semibold text-slate-900">
+                  {item.name}
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {item.summary}
+                </p>
+              </div>
             </div>
-            <ul className="mt-4 space-y-2 text-sm md:text-base text-slate-700 leading-relaxed list-disc pl-5">
+            <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-700 md:text-base">
               {item.points.map((point) => (
-                <li key={point}>{point}</li>
+                <li key={point} className="flex gap-2">
+                  <span className="mt-[0.4rem] h-1.5 w-1.5 rounded-full bg-sky-500" />
+                  <span>{point}</span>
+                </li>
               ))}
             </ul>
           </div>

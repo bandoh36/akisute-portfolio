@@ -2,34 +2,35 @@ import { HISTORY_CONTENT } from "@/constant/historyConstant";
 
 export default function HistoryContent() {
   return (
-    <div className="space-y-12 flex flex-col items-center">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
       {HISTORY_CONTENT.map((item, idx) => (
-        <div
+        <article
           key={idx}
-          className={`
-          flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12
-          ${idx % 2 === 1 ? "md:flex-row-reverse" : ""}
-          bg-white rounded-xl shadow-lg p-6 md:p-6
-          max-w-[1200px] w-full
-        `}
+          className="relative overflow-hidden rounded-[28px] border border-white/60 bg-white/88 p-6 shadow-2xl backdrop-blur-xl md:p-8"
         >
-          <div className="w-full md:w-1/2 flex justify-center items-center">
-            <img
-              src={item.image}
-              alt={item.title}
-              className="object-cover rounded-lg shadow-md max-h-56 md:max-h-72 w-full max-w-xs"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
-            <h3 className="text-xl md:text-2xl font-bold mb-4">{item.title}</h3>
-            <div className="space-y-4 text-base md:text-lg leading-relaxed">
-              {item.description.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+          <div className="absolute bottom-0 left-[110px] top-0 hidden w-px bg-slate-200 md:block" />
+          <div className="relative grid gap-6 md:grid-cols-[190px_minmax(0,1fr)] md:gap-10">
+            <div className="relative md:pr-6">
+              <div className="absolute -right-[9px] top-1 hidden h-4 w-4 rounded-full border-4 border-sky-200 bg-sky-500 md:block" />
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
+                {item.period}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                {item.role}
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold tracking-tight text-slate-950">
+                {item.title}
+              </h3>
+              <div className="space-y-4 text-sm leading-7 text-slate-700 md:text-base">
+                {item.description.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   );

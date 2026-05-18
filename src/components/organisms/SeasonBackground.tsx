@@ -5,7 +5,7 @@ import AutumnBackground from "@/components/organisms/Season/AutumnBackground";
 import WinterBackground from "@/components/organisms/Season/WinterBackground";
 
 interface SeasonBackgroungProps {
-  tabValue: number;
+  currentSection: string;
 }
 
 function getCurrentSeasonIndex(): number {
@@ -23,10 +23,19 @@ const seasonOrderMap: Record<number, number[]> = {
   3: [3, 0, 1, 2], // 冬
 };
 
-export default function SeasonBackground({ tabValue }: SeasonBackgroungProps) {
+export default function SeasonBackground({
+  currentSection,
+}: SeasonBackgroungProps) {
+  const sectionIndexMap: Record<string, number> = {
+    profile: 0,
+    history: 1,
+    skillset: 2,
+    work: 3,
+  };
   const currentSeasonIndex = getCurrentSeasonIndex();
   const seasonOrder = seasonOrderMap[currentSeasonIndex];
-  const currentSeason = seasonOrder[tabValue];
+  const currentSectionIndex = sectionIndexMap[currentSection] ?? 0;
+  const currentSeason = seasonOrder[currentSectionIndex];
 
   return (
     <AnimatePresence mode="wait">
@@ -36,7 +45,7 @@ export default function SeasonBackground({ tabValue }: SeasonBackgroungProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-0 pointer-events-auto"
+          className="fixed inset-0 z-0 pointer-events-none"
         >
           <SpringBackground />
         </motion.div>
@@ -47,7 +56,7 @@ export default function SeasonBackground({ tabValue }: SeasonBackgroungProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-0 pointer-events-auto"
+          className="fixed inset-0 z-0 pointer-events-none"
         >
           <SummerBackground />
         </motion.div>
@@ -58,7 +67,7 @@ export default function SeasonBackground({ tabValue }: SeasonBackgroungProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-0 pointer-events-auto"
+          className="fixed inset-0 z-0 pointer-events-none"
         >
           <AutumnBackground />
         </motion.div>
@@ -69,7 +78,7 @@ export default function SeasonBackground({ tabValue }: SeasonBackgroungProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-0 pointer-events-auto"
+          className="fixed inset-0 z-0 pointer-events-none"
         >
           <WinterBackground />
         </motion.div>
