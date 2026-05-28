@@ -14,8 +14,8 @@ export const WORK_CONTENTS = [
       back: "なし",
       infra: "AWS Amplify、CloudFront",
       source: {
-        text: "https://github.com/bandoh36/next-ts-app",
-        src: "https://github.com/bandoh36/next-ts-app",
+        text: "https://github.com/bandoh36/akisute-portfolio",
+        src: "https://github.com/bandoh36/akisute-portfolio",
       },
       other: [
         "・ポートフォリオの内容を継続的に更新し、自己紹介、経歴、スキル、制作物を整理して発信しています。",
@@ -36,6 +36,7 @@ export const WORK_CONTENTS = [
       "学習記録、筋トレ、予定、目標、TODO を 1 つのデスクトップアプリで管理し、日々の行動を RPG 的に可視化する個人開発アプリです。",
       "単なる CRUD ツールではなく、EXP、レベル、ストリーク、デイリークエスト、週次レポートまで実装し、継続のモチベーション設計も含めてプロダクトとして設計しています。",
       "Electron の Main / Preload / Renderer を分離し、IPC 経由で安全にデータ更新を行う構成にしており、ローカル JSON 永続化によるローカルファーストな使い勝手も重視しています。",
+      "あわせて、AI エージェントが安全に理解・変更しやすいように、設計情報、変更ルール、アーキテクチャ資料を整備し、AI 協働を前提にした保守しやすい開発基盤も構築しています。",
     ],
     link: "",
     modalDescription: {
@@ -43,12 +44,13 @@ export const WORK_CONTENTS = [
       back: "Electron Main Process、IPC、ローカル JSON ストア",
       infra: "Electron、electron-builder、Vite、vite-plugin-electron",
       source: {
-        text: "",
-        src: "",
+        text: "https://github.com/bandoh36/todo-app-ex",
+        src: "https://github.com/bandoh36/todo-app-ex",
       },
       other: [
         "・Renderer / Preload / Main を分離し、Preload で公開した API 経由のみで永続化やネイティブ連携を行う設計です。",
         "・ゲーミフィケーションのロジックを UI から分離し、保守しやすい構成を意識しています。",
+        "・AGENTS.md、Cursor Rules / Skills、設計資料を整備し、AI エージェントが変更対象や更新手順を把握しやすい状態を作っています。",
       ],
     },
   },
