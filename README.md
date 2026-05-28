@@ -1,38 +1,89 @@
 # akisute-portfolio
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+転職活動向けに継続改善しているポートフォリオサイトです。  
+自己紹介、経歴、スキル、制作物を 1 ページの縦スクロール構成でまとめ、現在の経験や強みが伝わるように設計しています。
 
-## Getting Started
+## Overview
 
-First, run the development server:
+このプロジェクトでは、以下の内容を掲載しています。
+
+- `PROFILE`
+  フロントエンドを主軸にした担当領域、これまでの経験、現在の強み
+- `CAREER`
+  保険系 SIer と自社サービス開発の 2 社分の経歴要約
+- `SKILLS`
+  実務・副業・個人開発を含む技術スタック、資格、AI ツール活用
+- `WORKS`
+  ポートフォリオ本体、My タスク管理アプリ、TIL などのアウトプット
+
+## Tech Stack
+
+- Framework: `Next.js 15` (App Router)
+- Language: `TypeScript`
+- UI: `React 19`
+- Styling: `Tailwind CSS 4`
+- Animation: `framer-motion`
+- Icons: `react-icons`
+- Deploy: `AWS Amplify`
+
+## Main Content Sources
+
+掲載内容の多くは `src/constant` 配下で管理しています。
+
+- `src/constant/profileConstant.ts`
+  プロフィール、自己紹介、サマリーカード
+- `src/constant/historyConstant.ts`
+  経歴セクションの表示内容
+- `src/constant/skillsetConstant.ts`
+  スキル、資格、AI ツール活用の内容
+- `src/constant/workConstant.ts`
+  制作物一覧とリンク情報
+
+## UI Structure
+
+- `src/components/templates/HomeTemp.tsx`
+  `/home` の全体構成、ヒーロー、セクション配置、スクロール連動
+- `src/components/organisms/content/*`
+  `Profile` `History` `Skillset` `Work` の各表示コンポーネント
+- `src/components/organisms/SeasonBackground.tsx`
+  背景演出
+- `src/components/organisms/NavigationTab.tsx`
+  ページ内ナビゲーション
+
+## Works
+
+現在の `WORKS` セクションには主に以下を掲載しています。
+
+- `Portfolio（当サイト）`
+  このポートフォリオ自体。構成や見せ方を継続的に改善
+- `Myタスク管理アプリ`
+  Electron + React + TypeScript による自己管理デスクトップアプリ
+- `TIL（学習アウトプット）`
+  学習内容を commit ベースで蓄積しているリポジトリ
+
+## Development
+
+開発サーバーの起動:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+本番ビルド確認:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ローカルでは `http://localhost:3000` で確認できます。
 
-## Learn More
+## Notes
 
-To learn more about Next.js, take a look at the following resources:
+- `/` から `/home` へ遷移する構成です。
+- 表示内容は UI コンポーネントに直接書かず、できるだけ `src/constant` 側で管理しています。
+- `WORKS` のリンクは、`src/constant/workConstant.ts` の `link` または `modalDescription.source` に URL を入れると表示されます。
+- バックエンドがない制作物では、`WorkCard` 側で `バックエンド` 項目が非表示になります。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+本プロジェクトは静的エクスポート前提で構成しており、`AWS Amplify` でデプロイしています。
