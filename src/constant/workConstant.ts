@@ -27,4 +27,53 @@ export const WORK_CONTENTS = [
       ],
     },
   },
+  {
+    title: "Myタスク管理アプリ",
+    subtitle:
+      "学習・運動・予定・目標・TODO を一元管理し、継続をゲーム体験に変える Electron デスクトップアプリ",
+    image: { src: "/img/work/todo.png", alt: "my task management app" },
+    description: [
+      "学習記録、筋トレ、予定、目標、TODO を 1 つのデスクトップアプリで管理し、日々の行動を RPG 的に可視化する個人開発アプリです。",
+      "単なる CRUD ツールではなく、EXP、レベル、ストリーク、デイリークエスト、週次レポートまで実装し、継続のモチベーション設計も含めてプロダクトとして設計しています。",
+      "Electron の Main / Preload / Renderer を分離し、IPC 経由で安全にデータ更新を行う構成にしており、ローカル JSON 永続化によるローカルファーストな使い勝手も重視しています。",
+    ],
+    link: "",
+    modalDescription: {
+      front: "TypeScript、React、react-router-dom、Tailwind CSS",
+      back: "Electron Main Process、IPC、ローカル JSON ストア",
+      infra: "Electron、electron-builder、Vite、vite-plugin-electron",
+      source: {
+        text: "",
+        src: "",
+      },
+      other: [
+        "・Renderer / Preload / Main を分離し、Preload で公開した API 経由のみで永続化やネイティブ連携を行う設計です。",
+        "・ゲーミフィケーションのロジックを UI から分離し、保守しやすい構成を意識しています。",
+      ],
+    },
+  },
+  {
+    title: "TIL（学習アウトプット）",
+    subtitle:
+      "日々の学びを commit ベースで蓄積し、継続的にアウトプットしている学習ログリポジトリ",
+    description: [
+      "日々学んだことを記録し、学習内容を継続的にアウトプットしているリポジトリです。",
+      "単なるメモではなく、調べた内容や理解したことを自分の言葉で整理し、commit ベースで積み上げることで、学習習慣と継続力が伝わる形を意識しています。",
+      "業務外でも技術理解を深めながら言語化する習慣があり、キャッチアップ力や自走力の補強材料としてポートフォリオに載せています。",
+    ],
+    link: "",
+    modalDescription: {
+      front: "Markdown、GitHub",
+      back: "なし",
+      infra: "Git / GitHub",
+      source: {
+        text: "https://github.com/bandoh36/TIL",
+        src: "https://github.com/bandoh36/TIL",
+      },
+      other: [
+        "・学習内容をその場限りにせず、継続的な記録として残す運用を続けています。",
+        "・技術のインプットだけでなく、整理してアウトプットする習慣自体をアピールできる題材です。",
+      ],
+    },
+  },
 ];

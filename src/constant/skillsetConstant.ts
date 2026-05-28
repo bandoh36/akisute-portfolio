@@ -45,35 +45,34 @@ export const SKILLSET_SECTIONS: SkillSection[] = [
     items: [
       {
         name: "HTML / CSS",
-        summary: "実務で継続的に利用",
+        summary: "Web アプリケーション開発で継続的に利用",
         points: [
-          "レスポンシブ対応が可能",
-          "保守性を意識したマークアップができる",
-          "コンポーネントを踏まえたスタイル設計を意識している",
+          "保守性や構造を意識したマークアップが可能",
+          "レスポンシブ対応や画面設計を踏まえたスタイリング経験あり",
         ],
       },
       {
-        name: "JavaScript / TypeScript",
-        summary: "実務で継続的に利用",
+        name: "TypeScript / JavaScript",
+        summary: "業務で継続的に利用",
         points: [
-          "フロントエンド開発で日常的に使用",
-          "可読性、型安全性、保守性を意識した実装が可能",
+          "型安全性と保守性を意識したフロントエンド実装が可能",
+          "既存コード読解やリファクタリングにも対応",
         ],
       },
       {
         name: "React / Next.js",
-        summary: "実務で利用中",
+        summary: "業務・副業で継続利用",
         points: [
-          "新規開発、既存画面の移行、UI 実装、画面改善、パフォーマンス改善を経験",
-          "SSR / SSG / ISR やキャッシュを踏まえた設計を学習・実践中",
+          "新規開発、既存画面移行、SSR / SSG / ISR を活用した画面開発を経験",
+          "パフォーマンス改善、SEO 対策、UI/UX 改善、LPO 施策を推進",
         ],
       },
       {
         name: "jQuery",
-        summary: "既存システムの保守、改修、移行案件で利用",
+        summary: "既存システムの改修・移行案件で利用",
         points: [
-          "レガシー環境の読み解きや改修に対応可能",
-          "モダンフロントエンドへの移行検討にも活かしている",
+          "既存資産の読解、機能追加、移行時の仕様把握に活用",
+          "PHP ベース画面の Next.js 移行案件で実務経験あり",
         ],
       },
     ],
@@ -84,24 +83,46 @@ export const SKILLSET_SECTIONS: SkillSection[] = [
     items: [
       {
         name: "Java",
-        summary: "SIer 時代の主力技術",
+        summary: "4年 / SIer 時代の主力技術",
         points: [
-          "業務システム開発、保守開発、設計、実装、テスト、運用保守を経験",
+          "業務システム開発において設計、実装、テスト、保守運用まで一貫して経験",
+          "保険系システム開発での実務経験あり",
+        ],
+      },
+      {
+        name: "PHP",
+        summary: "2年 / 既存システム改修・移行で利用",
+        points: [
+          "既存コードの読解を踏まえた機能改修や画面側との連携実装が可能",
         ],
       },
       {
         name: "Python",
-        summary: "副業で利用中",
+        summary: "2年 / 副業開発で利用",
         points: [
-          "AI サービスのバックエンド開発を担当",
-          "テキスト生成、音声生成、動画生成に関わる実装経験あり",
+          "AI サービス開発におけるバックエンド実装を担当",
+          "既存コードの読解、改修、周辺機能追加に対応可能",
         ],
       },
       {
-        name: "Node.js / SQL / Linux",
-        summary: "基礎的な実装、調査、運用対応が可能",
+        name: "SQL",
+        summary: "4年 / 業務システム開発・保守で利用",
         points: [
-          "API、データ処理、CLI 操作などを通して継続学習中",
+          "要件に応じた SQL 作成、データ調査、障害対応時の確認作業が可能",
+        ],
+      },
+      {
+        name: "Node.js / Nest.js",
+        summary: "API 連携や周辺実装で利用",
+        points: [
+          "フロントエンド移行案件や新サービス移行に関連する API 置き換えの理解あり",
+        ],
+      },
+      {
+        name: "Linux / Shell",
+        summary: "運用・保守、開発支援で利用",
+        points: [
+          "RedHat 系環境での操作やシェル利用を伴う実務経験あり",
         ],
       },
     ],
@@ -112,10 +133,25 @@ export const SKILLSET_SECTIONS: SkillSection[] = [
     items: [
       {
         name: "AWS",
-        summary: "業務・学習で利用",
+        summary: "3年 / 業務で継続利用",
         points: [
-          "CloudFront / ECS / S3 などの利用経験あり",
-          "基礎的な構成理解と運用観点を持っている",
+          "CloudFront / ECS / S3 を用いた構成での開発・運用に関与",
+          "配信構成やホスティングを踏まえたフロントエンド開発経験あり",
+        ],
+      },
+      {
+        name: "GCP",
+        summary: "3年 / 副業・個人開発で利用",
+        points: [
+          "Cloud Run / GCS / VM を用いたアプリ運用やバッチ実行を経験",
+          "AI 生成系サービスのサーバ構築経験あり",
+        ],
+      },
+      {
+        name: "Firebase",
+        summary: "2年 / 副業・個人開発で利用",
+        points: [
+          "認証、データ保存などの基本機能を用いたアプリ開発経験あり",
         ],
       },
     ],
@@ -126,24 +162,38 @@ export const SKILLSET_SECTIONS: SkillSection[] = [
     items: [
       {
         name: "Git / GitHub",
-        summary: "実務で日常的に利用",
+        summary: "4年 / チーム開発で継続利用",
         points: [
-          "チーム開発、コードレビュー、ブランチ運用に対応可能",
+          "ブランチ運用、Pull Request ベースの開発、コードレビューに対応可能",
         ],
       },
       {
         name: "SEO / パフォーマンス改善",
         summary: "現職で継続的に関与",
         points: [
-          "表示速度改善や SEO を意識したフロントエンド設計、改善施策の経験あり",
+          "PageSpeed 改善、構造化データ対応、キャッシュ戦略設計などを経験",
         ],
       },
       {
-        name: "AI 駆動開発",
-        summary: "日常的に活用",
+        name: "Sentry / microCMS / Jira",
+        summary: "運用・チーム開発で利用",
         points: [
-          "GitHub Copilot や Cursor を活用",
-          "実装補助、調査、レビュー観点整理、開発生産性向上に活かしている",
+          "Sentry による監視導入、microCMS のスキーマ設計、Jira を用いた進捗管理を経験",
+        ],
+      },
+      {
+        name: "Electron",
+        summary: "2年 / 副業・個人開発で利用",
+        points: [
+          "音声入力や動画再生を含むデスクトップアプリ開発経験あり",
+        ],
+      },
+      {
+        name: "AI ツール",
+        summary: "2年 / 実務・個人開発で活用",
+        points: [
+          "実務では GitHub Copilot を活用し、実装補助やレビュー観点整理、開発効率向上に活かしている",
+          "個人開発・副業では Cursor も活用し、要件整理、既存コード解析、リファクタリング、実装支援に取り組んでいる",
         ],
       },
     ],
