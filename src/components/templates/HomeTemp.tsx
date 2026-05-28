@@ -80,30 +80,27 @@ export default function HomeTemp() {
         <PageNameOverlay sectionName={currentOverlay} />
       </div>
       <div className="relative z-20">
-        <div className="mx-auto flex w-full max-w-6xl flex-col px-4 pb-24 pt-8 md:px-8 md:pt-14">
+        <div className="mx-auto flex w-full max-w-6xl flex-col px-4 pb-20 pt-4 md:px-8 md:pb-24 md:pt-14">
           <motion.section
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="pt-6"
+            className="pt-2 md:pt-6"
           >
-            <div className="rounded-[32px] border border-white/15 bg-white/12 p-6 shadow-2xl backdrop-blur-2xl md:p-10">
-              <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
-                <div className="flex h-full flex-col justify-between gap-8">
-                  <div className="space-y-3">
-                    <span className="inline-flex rounded-full border border-sky-200/30 bg-sky-100/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-100">
+            <div className="rounded-[28px] border border-white/15 bg-white/12 p-5 shadow-2xl backdrop-blur-2xl md:rounded-[32px] md:p-10">
+              <div className="grid gap-5 lg:grid-cols-[1.3fr_0.7fr] lg:items-end lg:gap-8">
+                <div className="flex h-full flex-col justify-between gap-5 md:gap-8">
+                  <div className="space-y-4">
+                    <span className="inline-flex rounded-full border border-sky-200/30 bg-sky-100/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-sky-100 md:px-4 md:text-xs md:tracking-[0.24em]">
                       Career Portfolio
                     </span>
-                    <div className="space-y-4">
-                      <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
-                        Akisute&apos;s Portfolio
-                      </h1>
-                      <p className="max-w-3xl text-lg leading-relaxed text-slate-200 md:text-xl">
-                        {PROFILE_CONTENT.lead}
-                      </p>
-                    </div>
-                    <div className="pt-2">
-                      <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white/80 bg-white/20 shadow-lg md:h-32 md:w-32">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0 flex-1">
+                        <h1 className="text-[2rem] font-semibold leading-tight tracking-tight text-white sm:text-[2.5rem] md:text-6xl">
+                          Akisute&apos;s Portfolio
+                        </h1>
+                      </div>
+                      <div className="h-24 w-24 shrink-0 overflow-hidden rounded-full border-4 border-white/80 bg-white/20 shadow-lg sm:h-28 sm:w-28 md:h-32 md:w-32">
                         <Image
                           src={PROFILE_CONTENT.image.src}
                           alt={PROFILE_CONTENT.image.alt}
@@ -112,16 +109,16 @@ export default function HomeTemp() {
                           priority
                           placeholder="blur"
                           blurDataURL={PROFILE_CONTENT.image.blurDataURL}
-                          sizes="128px"
+                          sizes="(max-width: 640px) 96px, 128px"
                           className="h-full w-full rounded-full object-cover"
                         />
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="grid grid-cols-1 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
                     <a
                       href={`mailto:${PROFILE_CONTENT.email}`}
-                      className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100 md:px-5"
                     >
                       <FaEnvelope className="h-4 w-4" />
                       Contact
@@ -130,7 +127,7 @@ export default function HomeTemp() {
                       href={PROFILE_CONTENT.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/15"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15 md:px-5"
                     >
                       <FaGithub className="h-4 w-4" />
                       GitHub
@@ -138,28 +135,28 @@ export default function HomeTemp() {
                     <button
                       type="button"
                       onClick={() => handleNavigate("work")}
-                      className="inline-flex items-center gap-2 rounded-full border border-transparent bg-sky-400/90 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-300"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-transparent bg-sky-400/90 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-300 md:px-5"
                     >
                       View Works
                     </button>
                   </div>
                 </div>
-                <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                  <div className="rounded-3xl border border-white/15 bg-slate-950/35 p-5 backdrop-blur-md">
-                    <p className="text-sm text-slate-300">Name</p>
-                    <p className="mt-2 text-lg font-semibold text-white">
+                <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 lg:gap-4">
+                  <div className="rounded-2xl border border-white/15 bg-slate-950/35 p-4 backdrop-blur-md md:rounded-3xl md:p-5">
+                    <p className="text-xs text-slate-300 md:text-sm">Name</p>
+                    <p className="mt-1.5 text-[13px] leading-5 font-semibold break-keep text-white sm:text-base md:mt-2 md:text-lg">
                       {PROFILE_CONTENT.name}
                     </p>
                   </div>
-                  <div className="rounded-3xl border border-white/15 bg-slate-950/35 p-5 backdrop-blur-md">
-                    <p className="text-sm text-slate-300">Career</p>
-                    <p className="mt-2 text-lg font-semibold text-white">
+                  <div className="rounded-2xl border border-white/15 bg-slate-950/35 p-4 backdrop-blur-md md:rounded-3xl md:p-5">
+                    <p className="text-xs text-slate-300 md:text-sm">Career</p>
+                    <p className="mt-1.5 text-[13px] leading-5 font-semibold break-keep text-white sm:text-base md:mt-2 md:text-lg">
                       {age}歳 / 社会人{workYears}年目
                     </p>
                   </div>
-                  <div className="rounded-3xl border border-white/15 bg-slate-950/35 p-5 backdrop-blur-md sm:col-span-3 lg:col-span-1">
-                    <p className="text-sm text-slate-300">Current Focus</p>
-                    <p className="mt-2 text-lg font-semibold text-white">
+                  <div className="rounded-2xl border border-white/15 bg-slate-950/35 p-4 backdrop-blur-md min-[420px]:col-span-2 sm:col-span-3 md:rounded-3xl md:p-5 lg:col-span-1">
+                    <p className="text-xs text-slate-300 md:text-sm">Current Focus</p>
+                    <p className="mt-1.5 text-[13px] leading-5 font-semibold break-keep text-white sm:text-base md:mt-2 md:text-lg">
                       {PROFILE_CONTENT.title}
                     </p>
                   </div>
@@ -168,7 +165,7 @@ export default function HomeTemp() {
             </div>
           </motion.section>
 
-          <div className="sticky top-4 z-30 mt-6 flex justify-center">
+          <div className="sticky top-3 z-30 mt-4 flex justify-center md:top-4 md:mt-6">
             <NavigationTab
               currentSection={activeSection}
               sections={sections}
@@ -176,19 +173,18 @@ export default function HomeTemp() {
             />
           </div>
 
-          <div className="mt-10 space-y-8 md:space-y-12">
+          <div className="mt-8 space-y-7 md:mt-10 md:space-y-12">
             <motion.section
               id="profile"
               data-section
               initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
               className="scroll-mt-28"
             >
               <SectionIntro
                 eyebrow="PROFILE"
-                title="どんなことを担当しているか"
+                title="自己紹介"
               />
               <div className="mt-5">
                 <ProfileContent />
@@ -199,8 +195,7 @@ export default function HomeTemp() {
               id="history"
               data-section
               initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
               className="scroll-mt-28"
             >
@@ -214,8 +209,7 @@ export default function HomeTemp() {
               id="skillset"
               data-section
               initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
               className="scroll-mt-28"
             >
@@ -229,8 +223,7 @@ export default function HomeTemp() {
               id="work"
               data-section
               initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
               className="scroll-mt-28"
             >
@@ -255,14 +248,14 @@ interface SectionIntroProps {
 function SectionIntro({ eyebrow, title, description }: SectionIntroProps) {
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-200">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-200 md:text-sm md:tracking-[0.24em]">
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+      <h2 className="mt-2 text-2xl font-semibold leading-tight tracking-tight text-white md:mt-3 md:text-4xl">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-200 md:text-lg">
+        <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-200 md:mt-4 md:text-lg md:leading-relaxed">
           {description}
         </p>
       )}

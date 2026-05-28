@@ -21,34 +21,39 @@ export const PROFILE_CONTENT = {
   },
   name: "Akisute（あきすて）",
   title: "Frontend Engineer",
-  lead:
-    "フロントエンドを主軸に、設計・進行管理・AI活用まで担当領域を広げているエンジニアです。",
   summaryCards: [
     {
       title: "フロントエンド開発",
       description:
-        "Next.js / React / TypeScript を中心に、フロントエンド開発を主担当として担当しています。",
-    },
-    {
-      title: "改善・移行",
-      description:
-        "新規開発だけでなく、既存画面の改善、移行、SEO、UI/UX 改善にも関わっています。",
+        "Next.js / React / TypeScript を中心に、自社サービスの新規開発、改善、既存画面の移行を担当しています。",
     },
     {
       title: "設計・進行管理",
       description:
-        "実装だけでなく、設計、コードレビュー、進行管理、スケジューリングも担当しています。",
+        "実装だけでなく、要件整理、設計、コードレビュー、進捗管理、スクラム運営まで担当しています。",
+    },
+    {
+      title: "モダナイゼーション",
+      description:
+        "PHP / jQuery ベースの既存システムを Next.js へ移行し、保守性や表示速度の改善を進めてきました。",
+    },
+    {
+      title: "AI 活用",
+      description:
+        "GitHub Copilot や Cursor を活用し、要件整理、実装、レビュー、調査の効率化にも取り組んでいます。",
     },
   ],
   description: [
-    `現在はフロントエンドエンジニアとして、
-Next.js / React / TypeScript を用いた開発を中心に担当しています。`,
-    `新規画面開発に加え、
-既存画面の改善や移行、表示速度改善、SEO を意識した実装、UI/UX 改善など、
-プロダクト改善に近い領域にも関わっています。`,
-    `また、開発だけでなく、
-設計、コードレビュー、進行管理、スケジューリングなども担当しています。
-副業では Python を使ったバックエンド開発や AI サービス開発にも取り組んでいます。`,
+    `2019年に保険系 SIer へ新卒入社し、
+保険業界向けシステム開発にて要件定義から設計、開発、テスト、運用保守まで一貫して経験しました。`,
+    `2023年からは自社サービス開発に従事し、
+Next.js / React / TypeScript を用いたフロントエンド開発を中心に担当しています。
+既存の PHP / jQuery ベース画面の Next.js 移行、SSR / ISR を活用したパフォーマンス改善、
+SEO 改善、UI/UX 改善、LPO 施策などを推進してきました。`,
+    `現在はフロントエンドを主軸としつつ、
+設計、コードレビュー、進行管理まで担当しています。
+また、GitHub Copilot や Cursor などの AI ツールも積極的に活用し、
+副業・個人開発では Next.js、Python、Firebase などを用いた開発も継続しています。`,
   ],
   email: "bandoh4321@gmail.com",
   github: "https://github.com/bandoh36",
